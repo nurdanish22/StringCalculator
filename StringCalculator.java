@@ -64,33 +64,28 @@ public class StringCalculator {
         }
     }
 
-    private boolean isMathSymbol(char c) {
-        // Check if the character is a math symbol
-        return c == '+' || c == '-' || c == '*' || c == '/';
+    public boolean isMathSymbol(char c) { // Check if the character is a math symbol
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '%';
     }
 
-    private boolean hasPrecedence(char op1, char op2) { // Check if op1 has higher or equal precedence than op2
-        if (op2 == '(' || op2 == ')')
+    public boolean hasPrecedence(char op1, char op2) { // Check if the first operation has higher precedence than the second operation
+        if ((op1 == '*' || op1 == '/' || op1 == '%') && (op2 == '+' || op2 == '-')) {
             return false;
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-'))
-            return false;
-        else
+        } else {
             return true;
+        }
     }
 
     public int getInvalidSymbolCount() { // Return the number of invalid symbols
         return invalidSymbolCount;
     }
 
-    private void processOperation(Stack<Double> numbers, Stack<Character> operations) {
-        // Pop an operation from the operations stack
+    public void processOperation(Stack<Double> numbers, Stack<Character> operations) {
+        // Pop the top operation and perform it on the top two numbers
         char operation = operations.pop();
-
-        // Pop two numbers from the numbers stack
         double number2 = numbers.pop();
         double number1 = numbers.pop();
-
-        // Perform the operation and push the result onto the numbers stack
+        
         switch (operation) {
             case '+':
                 numbers.push(number1 + number2);
@@ -102,7 +97,15 @@ public class StringCalculator {
                 numbers.push(number1 * number2);
                 break;
             case '/':
-                numbers.push(number1 / number2);
+                if (number2 != 0) {
+                    numbers.push(number1 / number2);
+                } else {
+                    System.out.println("Error: Division by zero");
+                    System.exit(1);
+                }
+                break;
+            case '%':
+                numbers.push(number1 % number2);
                 break;
         }
     }
