@@ -45,7 +45,7 @@ public class StringCalculator {
         System.out.println("Math symbol count: " + mathSymbolCount);
         System.out.println("Invalid symbol count: " + invalidSymbolCount);
         
-        if (invalidSymbolCount > 0){ // If there are invalid symbols, return NaN
+        if (invalidSymbolCount > 0){ // If there are invalid symbols, return NaN (Not a Number)
             return Double.NaN;
             } else {
             return numbers.pop();
