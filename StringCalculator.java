@@ -1,4 +1,4 @@
-//Nurdanish "Trigger" Effendi bin Roestam Effendi (2224875)
+//Nurdanish "Trigger"
 package StringCalculator;
 import java.util.Stack;
 
