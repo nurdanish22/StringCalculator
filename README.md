@@ -13,3 +13,4 @@ c. Any repetitive numbers (11, 21, 30, etc.) are considered double-digit numbers
 Notes
 1. Use a split() method to convert the string into an array or character.
 2. Format the output to two (2) decimal places by using a String.format() method.
+i like turtles
